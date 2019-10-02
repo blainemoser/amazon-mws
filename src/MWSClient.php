@@ -482,13 +482,14 @@ class MWSClient{
             'GetReportListByNextToken',
             $query
         );
-        if (isset($response['GetReportListByNextTokenResult']['Orders']['Order'])) {
+
+        if (isset($response['GetReportListByNextTokenResult']['ReportInfo'])) {
             if (isset($response['GetReportListByNextTokenResult']['NextToken'])) {
-                $data['GetReportList'] = $response['GetReportListByNextTokenResult']['Orders']['Order'];
+                $data['GetReportList'] = $response['GetReportListByNextTokenResult']['ReportInfo'];
                 $data['NextToken'] = $response['GetReportListByNextTokenResult']['NextToken'];
                 return $data;
             }
-            $response = $response['GetReportListByNextTokenResult']['Orders']['Order'];
+            $response = $response['GetReportListByNextTokenResult']['ReportInfo'];
 
             if (array_keys($response) !== range(0, count($response) - 1)) {
                 return [$response];
