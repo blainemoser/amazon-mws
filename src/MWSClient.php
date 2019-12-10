@@ -384,11 +384,11 @@ class MWSClient{
     ], $FulfillmentChannels = 'MFN', DateTime $till = null)
     {
         $query = [
-            'CreatedAfter' => gmdate(self::DATE_FORMAT, $from->getTimestamp())
+            'LastUpdatedAfter' => gmdate(self::DATE_FORMAT, $from->getTimestamp())
         ];
 
         if ($till !== null) {
-          $query['CreatedBefore'] = gmdate(self::DATE_FORMAT, $till->getTimestamp());
+          $query['LastUpdatedBefore'] = gmdate(self::DATE_FORMAT, $till->getTimestamp());
         }
 
         $counter = 1;
